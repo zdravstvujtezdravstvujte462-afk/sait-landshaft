@@ -1,0 +1,666 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Крона</title>
+<script>document.documentElement.lang="ru";document.documentElement.classList.add("js")</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&family=Manrope:wght@400;500;600&display=swap">
+<style>
+/* Крона: one dark look by design. Stone neutrals, moss for emphasis, birch only for the seasonal note. */
+:root{
+  --stone-50:oklch(0.965 0.010 165); --stone-100:oklch(0.925 0.012 165); --stone-200:oklch(0.875 0.014 165); --stone-300:oklch(0.780 0.016 165); --stone-400:oklch(0.700 0.018 165); --stone-500:oklch(0.580 0.018 165); --stone-600:oklch(0.460 0.020 165); --stone-700:oklch(0.360 0.022 165); --stone-800:oklch(0.295 0.022 165); --stone-850:oklch(0.255 0.021 165); --stone-900:oklch(0.222 0.020 165); --stone-950:oklch(0.195 0.018 165);
+  --moss-100:oklch(0.930 0.047 132); --moss-200:oklch(0.880 0.098 132); --moss-300:oklch(0.820 0.114 132); --moss-400:oklch(0.740 0.107 132); --moss-500:oklch(0.640 0.098 132); --moss-600:oklch(0.540 0.083 132); --moss-700:oklch(0.440 0.061 132); --moss-900:oklch(0.260 0.025 132);
+  --birch-200:oklch(0.900 0.027 78); --birch-300:oklch(0.840 0.062 78); --birch-500:oklch(0.700 0.066 78); --birch-800:oklch(0.320 0.020 78);
+  --clay-300:oklch(0.780 0.056 38); --clay-500:oklch(0.660 0.108 38);
+  /* surfaces */
+  --color-bg-page:var(--stone-900); --color-bg-sunken:var(--stone-950); --color-bg-surface:var(--stone-850);
+  --color-bg-inverse:var(--stone-100); --color-bg-inverse-hover:var(--stone-50);
+  /* text */
+  --color-text:var(--stone-100); --color-text-secondary:var(--stone-400); --color-text-accent:var(--moss-300); --color-text-featured:var(--birch-300);
+  --color-text-on-inverse:var(--stone-950); --color-text-on-photo:var(--stone-50); --color-danger-text:var(--clay-300);
+  /* lines */
+  --color-border:color-mix(in oklab,var(--stone-100) 12%,transparent);
+  --color-border-strong:color-mix(in oklab,var(--stone-100) 44%,transparent);
+  --color-focus:var(--moss-300);
+  /* atmosphere */
+  --color-scrim:var(--stone-950); --color-shadow:oklch(0.12 0.015 165);
+
+  /* type */
+  --font-serif:"Noto Serif Display",Georgia,"Times New Roman",serif;
+  --font-sans:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --text-caption:.8125rem; --text-ui:.875rem; --text-body:1rem; --text-lead:1.25rem;
+  --text-h3:1.75rem; --text-figure:clamp(2.75rem,5vw,4rem);
+  --text-h2:clamp(2.5rem,5.4vw,4.75rem); --text-statement:clamp(1.75rem,3.2vw,2.75rem); --text-display:clamp(3.25rem,8.6vw,8.25rem);
+
+  /* space */
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-5:24px; --space-6:32px; --space-7:48px; --space-8:64px; --space-9:96px; --space-10:144px;
+  --gutter:clamp(20px,4vw,64px); --section:clamp(96px,12vw,176px); --header-h:80px;
+  --ease-out:cubic-bezier(.2,0,0,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-block-start:var(--header-h);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--color-bg-page);color:var(--color-text);font:400 var(--text-body)/1.6 var(--font-sans);overflow-x:clip}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+  radial-gradient(60% 45% at 0% 0%,color-mix(in oklab,var(--moss-500) 10%,transparent),transparent 70%),
+  radial-gradient(55% 55% at 100% 40%,color-mix(in oklab,var(--stone-300) 5%,transparent),transparent 70%)}
+img{display:block;max-width:100%}
+h1,h2,h3,p,figure,ul,ol,dl,dd{margin:0}
+ul,ol{padding:0;list-style:none}
+h1,h2,h3{font-weight:400;text-wrap:balance}
+p{text-wrap:pretty}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--color-focus);outline-offset:3px}
+::selection{background:var(--moss-700);color:var(--stone-50)}
+.wrap{max-width:1320px;margin-inline:auto;padding-inline:var(--gutter)}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+/* type roles */
+.display{font:200 var(--text-display)/1.1 var(--font-serif);letter-spacing:-.02em}
+.h2{font:300 var(--text-h2)/1.1 var(--font-serif);letter-spacing:-.02em}
+.h3{font:400 var(--text-h3)/1.25 var(--font-serif);letter-spacing:-.01em}
+.statement{font:300 var(--text-statement)/1.4 var(--font-serif);letter-spacing:-.01em;max-width:28ch}
+.lead{font:400 var(--text-lead)/1.5 var(--font-serif);max-width:44ch}
+.body{max-width:62ch;color:var(--color-text-secondary)}
+.caption{font-size:var(--text-caption);line-height:1.5;color:var(--color-text-secondary)}
+.eyebrow{display:flex;align-items:center;gap:var(--space-3);font:500 var(--text-caption)/1.5 var(--font-sans);color:var(--color-text-secondary)}
+.eyebrow::before{content:"";inline-size:28px;block-size:1px;background:currentColor}
+em{font-style:italic}
+.accent{color:var(--color-text-accent)}
+.num{font-variant-numeric:tabular-nums}
+
+/* buttons and links */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-3);block-size:52px;padding-inline:28px;border:1px solid transparent;border-radius:999px;
+  font:500 .9375rem/1 var(--font-sans);text-decoration:none;white-space:nowrap;cursor:pointer;-webkit-tap-highlight-color:transparent;
+  transition-property:background-color,color,box-shadow,scale;transition-duration:150ms;transition-timing-function:ease-out}
+.btn svg{inline-size:16px;block-size:16px;fill:none;stroke:currentColor;stroke-width:1.75;transition:translate 150ms ease-out}
+.btn-primary{background:var(--color-bg-inverse);color:var(--color-text-on-inverse);padding-inline-end:26px}
+.btn-secondary{background:transparent;color:var(--color-text);box-shadow:inset 0 0 0 1px var(--color-border-strong)}
+.btn-on-photo{color:var(--color-text-on-photo);box-shadow:inset 0 0 0 1px color-mix(in oklab,var(--color-text-on-photo) 55%,transparent)}
+.btn-sm{block-size:44px;padding-inline:20px;font-size:var(--text-ui)}
+.btn:not(:disabled):active{scale:.96}
+@media(hover:hover){
+  .btn-primary:hover{background:var(--color-bg-inverse-hover)}
+  .btn-secondary:hover{box-shadow:inset 0 0 0 1px var(--color-text)}
+  .btn-on-photo:hover{box-shadow:inset 0 0 0 1px var(--color-text-on-photo)}
+}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){.btn:hover svg{translate:3px 0}}
+.link{text-decoration:underline;text-decoration-thickness:from-font;text-underline-position:from-font;text-underline-offset:.2em;text-decoration-color:var(--color-border-strong);transition:text-decoration-color 150ms ease-out}
+@media(hover:hover){.link:hover{text-decoration-color:currentColor}}
+
+/* skip link */
+.skip{position:fixed;inset-inline-start:var(--space-4);inset-block-start:var(--space-3);z-index:100;padding:10px 16px;border-radius:999px;background:var(--color-bg-inverse);color:var(--color-text-on-inverse);font-weight:500;text-decoration:none;translate:0 -200%}
+.skip:focus-visible{translate:0 0}
+
+/* header */
+.header{position:fixed;inset-inline:0;inset-block-start:0;z-index:50;block-size:var(--header-h);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:var(--space-5);
+  padding-inline:var(--gutter);color:var(--color-text-on-photo);border-block-end:1px solid transparent;transition-property:background-color,border-color;transition-duration:300ms;transition-timing-function:ease-out}
+.header.is-solid{background:color-mix(in oklab,var(--color-bg-page) 94%,transparent);border-block-end-color:var(--color-border);color:var(--color-text)}
+.brand{justify-self:start;display:grid;gap:2px;text-decoration:none;line-height:1}
+.brand b{font:400 1.75rem/1 var(--font-serif);letter-spacing:-.02em}
+.brand span{font:500 .75rem/1.2 var(--font-sans);opacity:.8}
+.nav{display:flex;gap:var(--space-6)}
+.nav a{position:relative;padding-block:10px;font:500 var(--text-ui)/1.2 var(--font-sans);text-decoration:none;opacity:.86;transition:opacity 150ms ease-out}
+.nav a::after{content:"";position:absolute;inset-inline:0;inset-block-end:4px;block-size:1px;background:currentColor;scale:0 1;transform-origin:left;transition:scale 300ms var(--ease-out)}
+.nav a[aria-current="true"]{opacity:1}
+.nav a[aria-current="true"]::after{scale:1 1}
+@media(hover:hover){.nav a:hover{opacity:1}.nav a:hover::after{scale:1 1}}
+.header-end{justify-self:end;display:flex;align-items:center;gap:var(--space-5)}
+.phone{font:400 1.0625rem/1 var(--font-serif);text-decoration:none;white-space:nowrap;font-variant-numeric:tabular-nums}
+.header .btn-sm{color:inherit;box-shadow:inset 0 0 0 1px color-mix(in oklab,currentColor 55%,transparent)}
+@media(hover:hover){.header .btn-sm:hover{box-shadow:inset 0 0 0 1px currentColor}}
+.menu-btn{display:none;inline-size:48px;block-size:48px;border:1px solid transparent;border-radius:50%;background:transparent;cursor:pointer;box-shadow:inset 0 0 0 1px color-mix(in oklab,currentColor 55%,transparent);position:relative}
+.menu-btn span{position:absolute;inset-inline:15px;block-size:1.5px;background:currentColor;border-radius:2px}
+.menu-btn span:first-child{inset-block-start:19px}.menu-btn span:last-child{inset-block-start:27px}
+@media(max-width:1100px){.phone{display:none}}
+@media(max-width:1023px){.nav{display:none}.menu-btn{display:block}.header{grid-template-columns:1fr auto}}
+@media(max-width:560px){.header .btn-sm{display:none}}
+
+/* menu dialog */
+.menu{inline-size:100%;max-inline-size:none;block-size:100dvh;max-block-size:none;margin:0;padding:0;border:0;background:var(--color-bg-sunken);color:var(--color-text);overscroll-behavior:contain}
+.menu::backdrop{background:var(--color-scrim)}
+.menu-in{min-block-size:100%;display:grid;grid-template-rows:auto 1fr auto;gap:var(--space-7);padding:var(--space-4) var(--gutter) var(--space-7)}
+.menu-top{display:flex;justify-content:space-between;align-items:center;block-size:calc(var(--header-h) - var(--space-4))}
+.menu-close{inline-size:48px;block-size:48px;border:1px solid transparent;border-radius:50%;background:transparent;cursor:pointer;box-shadow:inset 0 0 0 1px var(--color-border-strong);display:grid;place-items:center}
+.menu-close svg{inline-size:18px;block-size:18px;stroke:currentColor;stroke-width:1.5}
+.menu-links{align-self:center;display:grid;border-block-start:1px solid var(--color-border)}
+.menu-links a{display:flex;align-items:baseline;gap:var(--space-5);padding-block:var(--space-4);border-block-end:1px solid var(--color-border);font:300 clamp(2rem,7vw,3.5rem)/1.1 var(--font-serif);text-decoration:none}
+.menu-links a small{font:500 var(--text-caption)/1 var(--font-sans);color:var(--color-text-secondary);font-variant-numeric:tabular-nums;min-inline-size:2em}
+.menu-foot{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--space-5)}
+.menu-foot a{font:400 1.25rem/1.4 var(--font-serif);text-decoration:none}
+@media(prefers-reduced-motion:no-preference){.menu[open]{animation:fade 300ms ease-out}}
+@keyframes fade{from{opacity:0}}
+
+/* hero */
+.hero{position:relative;block-size:100svh;min-block-size:640px;max-block-size:1080px;overflow:hidden;isolation:isolate;background:var(--color-bg-sunken);color:var(--color-text-on-photo)}
+.slide{position:absolute;inset:0;z-index:-2;opacity:0;transition:opacity 1600ms ease-out}
+.slide.is-on{opacity:1}
+.slide img{inline-size:100%;block-size:100%;object-fit:cover;filter:saturate(.85) brightness(.82)}
+@media(prefers-reduced-motion:no-preference){.slide img{scale:1.06;transition:scale 9s cubic-bezier(.2,.6,.3,1)}.slide.is-on img{scale:1}}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:
+  linear-gradient(180deg,color-mix(in oklab,var(--color-scrim) 55%,transparent),transparent 26%,transparent 42%,color-mix(in oklab,var(--color-scrim) 82%,transparent)),
+  linear-gradient(90deg,color-mix(in oklab,var(--color-scrim) 50%,transparent),transparent 60%)}
+.hero-in{position:absolute;inset-inline:var(--gutter);inset-block-end:clamp(96px,14vh,160px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--space-5);align-items:end}
+.hero-copy{grid-column:1/9;display:grid;gap:var(--space-6)}
+.hero .eyebrow{color:color-mix(in oklab,var(--color-text-on-photo) 82%,transparent)}
+.hero h1 em{color:var(--moss-200)}
+.hero .lead{color:color-mix(in oklab,var(--color-text-on-photo) 88%,transparent);max-inline-size:40ch}
+.actions{display:flex;flex-wrap:wrap;gap:var(--space-3)}
+.hero-ctrl{grid-column:9/13;justify-self:end;display:grid;justify-items:end;gap:var(--space-3);text-align:end}
+.hero-cap b{display:block;font:400 1.25rem/1.3 var(--font-serif)}
+.hero-cap span{font-size:var(--text-caption);opacity:.82}
+.hero-row{display:flex;align-items:center;gap:var(--space-3)}
+.bars{display:flex;gap:6px}
+.bars button{inline-size:48px;block-size:24px;padding:0;border:0;background:transparent;cursor:pointer;display:grid;align-items:center}
+.bars i{display:block;block-size:2px;border-radius:2px;background:color-mix(in oklab,var(--color-text-on-photo) 30%,transparent);overflow:hidden}
+.bars i::after{content:"";display:block;block-size:100%;background:var(--color-text-on-photo);scale:0 1;transform-origin:left}
+.bars button.is-done i::after{scale:1 1}
+.bars button[aria-current="true"] i::after{animation:fill var(--dur,7s) linear forwards}
+.bars.is-paused button[aria-current="true"] i::after{animation-play-state:paused}
+@keyframes fill{to{scale:1 1}}
+.pause{position:relative;inline-size:36px;block-size:36px;padding:0;border:1px solid transparent;border-radius:50%;background:transparent;color:inherit;cursor:pointer;box-shadow:inset 0 0 0 1px color-mix(in oklab,var(--color-text-on-photo) 55%,transparent);transition:background-color 150ms ease-out}
+@media(hover:hover){.pause:hover{background:color-mix(in oklab,var(--color-text-on-photo) 12%,transparent)}}
+.pause svg{position:absolute;inset:0;margin:auto;inline-size:12px;block-size:12px;fill:currentColor;transition-property:opacity,scale,filter;transition-duration:300ms;transition-timing-function:var(--ease-out)}
+.pause .i-play{opacity:0;translate:1px 0}
+.pause[data-paused] .i-pause{opacity:0}.pause[data-paused] .i-play{opacity:1}
+@media(prefers-reduced-motion:no-preference){.pause .i-play,.pause[data-paused] .i-pause{scale:.25;filter:blur(4px)}.pause[data-paused] .i-play{scale:1;filter:none}}
+@media(max-width:860px){.hero::after{background:linear-gradient(180deg,color-mix(in oklab,var(--color-scrim) 60%,transparent),transparent 22%,color-mix(in oklab,var(--color-scrim) 35%,transparent) 45%,color-mix(in oklab,var(--color-scrim) 90%,transparent))}.hero-in{grid-template-columns:1fr;row-gap:var(--space-7);inset-block-end:var(--space-6)}.hero-copy,.hero-ctrl{grid-column:1}.hero-ctrl{justify-self:start;justify-items:start;text-align:start}.hero-cap{display:none}}
+
+/* sections */
+.section{padding-block-start:var(--section)}
+.sec-head{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--space-5);row-gap:var(--space-5);align-items:end;margin-block-end:clamp(48px,6vw,88px)}
+.sec-head .eyebrow{grid-column:1/-1}
+.sec-head h2{grid-column:1/8}
+.sec-head .body{grid-column:9/13}
+@media(max-width:860px){.sec-head h2,.sec-head .body{grid-column:1/-1}}
+
+/* approach */
+.approach{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--space-5);row-gap:var(--space-8);position:relative}
+.approach .eyebrow{grid-column:1/4;align-self:start;padding-block-start:.9em}
+.approach .statement{grid-column:4/13}
+.approach .statement em{color:var(--color-text-accent)}
+.figures{grid-column:4/13;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-5)}
+.figures div{display:grid;gap:var(--space-2);padding-block-start:var(--space-5);border-block-start:1px solid var(--color-border)}
+.figures b{font:300 var(--text-figure)/1.1 var(--font-serif);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+@media(max-width:860px){.approach .eyebrow,.approach .statement,.figures{grid-column:1/-1}.figures{grid-template-columns:1fr}}
+
+/* projects */
+.filters{display:flex;flex-wrap:wrap;gap:var(--space-2);grid-column:9/13;justify-self:end}
+.chip{block-size:40px;padding-inline:18px;border:1px solid transparent;border-radius:999px;background:transparent;color:var(--color-text-secondary);font:500 var(--text-ui)/1 var(--font-sans);cursor:pointer;box-shadow:inset 0 0 0 1px var(--color-border);transition-property:color,background-color,box-shadow;transition-duration:150ms;transition-timing-function:ease-out}
+@media(hover:hover){.chip:hover{color:var(--color-text);box-shadow:inset 0 0 0 1px var(--color-border-strong)}}
+.chip[aria-pressed="true"]{background:var(--color-bg-inverse);color:var(--color-text-on-inverse);box-shadow:none}
+@media(max-width:860px){.filters{grid-column:1/-1;justify-self:start}}
+.works{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--space-5);row-gap:var(--space-9);align-items:start}
+.work{display:grid;gap:var(--space-4);padding:0;border:0;background:none;text-align:start;cursor:zoom-in;transition:opacity 300ms ease-out}
+.work[disabled]{opacity:.28;cursor:default}
+.work-img{display:block;overflow:hidden;background:var(--color-bg-surface);outline:1px solid oklch(1 0 0 / .1);outline-offset:-1px}
+.work-img img{inline-size:100%;block-size:100%;object-fit:cover;filter:saturate(.9);transition:scale 700ms var(--ease-out),filter 700ms var(--ease-out)}
+@media(hover:hover){.work:not([disabled]):hover .work-img img{filter:saturate(1)}}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){.work:not([disabled]):hover .work-img img{scale:1.03}}
+.work-meta{display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-4);flex-wrap:wrap}
+.work-t{font:400 1.5rem/1.25 var(--font-serif);letter-spacing:-.01em}
+.w-a{grid-column:1/8}.w-a .work-img{aspect-ratio:4/3}
+.w-b{grid-column:9/13;margin-block-start:160px}.w-b .work-img{aspect-ratio:3/4}
+.w-c{grid-column:2/7}.w-c .work-img{aspect-ratio:4/5}
+.w-d{grid-column:8/13;margin-block-start:-40px}.w-d .work-img{aspect-ratio:1/1}
+.w-e{grid-column:1/6}.w-e .work-img{aspect-ratio:3/4}
+.w-f{grid-column:7/13;margin-block-start:120px}.w-f .work-img{aspect-ratio:4/3}
+.w-g{grid-column:2/8}.w-g .work-img{aspect-ratio:1/1}
+.w-h{grid-column:9/13;margin-block-start:100px}.w-h .work-img{aspect-ratio:3/4}
+.w-i{grid-column:3/11}.w-i .work-img{aspect-ratio:16/9}
+@media(max-width:860px){.works{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:var(--space-4);row-gap:var(--space-7)}.work{grid-column:auto!important;margin-block-start:0!important}.work:nth-child(even){margin-block-start:var(--space-8)!important}.work-img{aspect-ratio:3/4!important}.w-i{grid-column:1/-1!important;margin-block-start:0!important}.w-i .work-img{aspect-ratio:4/3!important}}
+@media(max-width:560px){.works{grid-template-columns:minmax(0,1fr)}.work:nth-child(even){margin-block-start:0!important}.work-img{aspect-ratio:4/3!important}}
+
+/* services */
+.services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--space-5);row-gap:var(--space-8)}
+.service{display:grid;grid-template-columns:3.5rem minmax(0,1fr);column-gap:var(--space-5);row-gap:var(--space-4);padding-block-start:var(--space-5);border-block-start:1px solid var(--color-border)}
+.service>small{grid-row:1/4;font:500 var(--text-caption)/2.6 var(--font-sans);color:var(--color-text-accent);font-variant-numeric:tabular-nums}
+.service ul{display:grid;gap:var(--space-2);font-size:var(--text-ui);color:var(--color-text-secondary)}
+.service li{display:flex;gap:var(--space-3)}
+.service li::before{content:"";flex:none;inline-size:12px;block-size:1px;margin-block-start:.75em;background:var(--color-border-strong)}
+@media(max-width:860px){.services{grid-template-columns:minmax(0,1fr)}}
+
+/* process */
+.steps{border-block-start:1px solid var(--color-border)}
+.step{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--space-5);row-gap:var(--space-3);align-items:baseline;padding-block:var(--space-6);border-block-end:1px solid var(--color-border)}
+.step>small{grid-column:1/2;font:500 var(--text-caption)/1 var(--font-sans);color:var(--color-text-accent);font-variant-numeric:tabular-nums}
+.step h3{grid-column:2/6}
+.step p{grid-column:6/11;color:var(--color-text-secondary);max-inline-size:52ch}
+.step>span{grid-column:11/13;justify-self:end;font-size:var(--text-caption);color:var(--color-text-secondary);white-space:nowrap}
+@media(max-width:860px){.step>small{grid-column:1/-1}.step h3,.step p{grid-column:1/-1}.step>span{grid-column:1/-1;justify-self:start}}
+
+/* care */
+.care{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--space-5)}
+.care div{display:grid;align-content:start;gap:var(--space-3);padding-block-start:var(--space-5);border-block-start:1px solid var(--color-border)}
+.care b{font:400 1.375rem/1.3 var(--font-serif)}
+.care p{font-size:var(--text-ui);color:var(--color-text-secondary)}
+@media(max-width:960px){.care{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:var(--space-7)}}
+@media(max-width:560px){.care{grid-template-columns:minmax(0,1fr)}}
+
+/* formats */
+.formats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-5)}
+.format{display:grid;align-content:start;gap:var(--space-4);padding-block-start:var(--space-5);border-block-start:1px solid var(--color-border-strong)}
+.price{display:flex;align-items:baseline;gap:var(--space-2);flex-wrap:wrap;font-variant-numeric:tabular-nums}
+.price small{font-size:var(--text-ui);color:var(--color-text-secondary)}
+.price b{font:300 2.25rem/1.1 var(--font-serif);letter-spacing:-.02em}
+.format p{color:var(--color-text-secondary);max-inline-size:40ch}
+.note{margin-block-start:var(--space-7);max-inline-size:62ch}
+@media(max-width:860px){.formats{grid-template-columns:minmax(0,1fr);row-gap:var(--space-7)}}
+
+/* contact */
+.contact{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--space-5);row-gap:var(--space-8);align-items:start}
+.contact-side{grid-column:1/6;display:grid;gap:var(--space-7)}
+.contact-form{grid-column:7/13}
+.lines{display:grid;gap:var(--space-5)}
+.line{display:flex;justify-content:space-between;align-items:end;gap:var(--space-4);padding-block-end:var(--space-4);border-block-end:1px solid var(--color-border)}
+.line a{display:block;font:400 1.5rem/1.3 var(--font-serif);text-decoration:none;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.copy{flex:none;block-size:36px;padding-inline:14px;border:1px solid transparent;border-radius:999px;background:transparent;color:var(--color-text-secondary);font:500 var(--text-caption)/1 var(--font-sans);cursor:pointer;box-shadow:inset 0 0 0 1px var(--color-border);transition-property:color,box-shadow;transition-duration:150ms;transition-timing-function:ease-out}
+@media(hover:hover){.copy:hover{color:var(--color-text);box-shadow:inset 0 0 0 1px var(--color-border-strong)}}
+.faq{border-block-start:1px solid var(--color-border)}
+.faq details{border-block-end:1px solid var(--color-border)}
+.faq summary{display:flex;justify-content:space-between;gap:var(--space-4);padding-block:var(--space-5);cursor:pointer;list-style:none;font:400 1.1875rem/1.4 var(--font-serif)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;font:300 1.5rem/1 var(--font-sans);color:var(--color-text-secondary);transition:rotate 300ms var(--ease-out)}
+.faq details[open] summary::after{rotate:45deg}
+.faq p{padding-block-end:var(--space-5);color:var(--color-text-secondary);max-inline-size:56ch}
+@media(max-width:960px){.contact-side,.contact-form{grid-column:1/-1}}
+
+/* form */
+.form{display:grid;gap:var(--space-6);padding:clamp(24px,4vw,48px);background:var(--color-bg-surface);box-shadow:0 1px 0 oklch(1 0 0 / .05) inset,0 40px 80px -48px var(--color-shadow)}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-6) var(--space-5)}
+.field{display:grid;gap:var(--space-2);min-inline-size:0}
+.field.full{grid-column:1/-1}
+.field label,.field legend{font-size:var(--text-ui);color:var(--color-text-secondary);padding:0}
+.input{inline-size:100%;block-size:48px;padding:0;border:0;border-block-end:1px solid var(--color-border-strong);background:transparent;font-size:1rem;transition:border-color 150ms ease-out}
+textarea.input{block-size:auto;min-block-size:96px;padding-block:12px;resize:vertical;line-height:1.5}
+select.input{appearance:none;padding-inline-end:28px;cursor:pointer;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2395a29c' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") right 2px center/14px no-repeat}
+select.input option{background:var(--color-bg-surface);color:var(--color-text)}
+.input::placeholder{color:var(--color-text-secondary);opacity:1}
+.input:focus{outline:none;border-block-end-color:var(--color-focus);box-shadow:0 1px 0 var(--color-focus)}
+.input[aria-invalid="true"]{border-block-end-color:var(--color-danger-text)}
+.err{font-size:var(--text-caption);color:var(--color-danger-text)}
+fieldset{border:0;margin:0;padding:0;min-inline-size:0}
+.radios{display:flex;flex-wrap:wrap;gap:var(--space-2);margin-block-start:var(--space-2)}
+.radios label{position:relative}
+.radios input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.radios span{display:inline-flex;align-items:center;block-size:40px;padding-inline:18px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--color-border-strong);font:500 var(--text-ui)/1 var(--font-sans);color:var(--color-text-secondary);transition-property:color,background-color,box-shadow;transition-duration:150ms;transition-timing-function:ease-out}
+.radios input:checked+span{background:var(--color-bg-inverse);color:var(--color-text-on-inverse);box-shadow:none}
+.radios input:focus-visible+span{outline:2px solid var(--color-focus);outline-offset:3px}
+.form-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--space-4)}
+.form-foot .caption{max-inline-size:34ch}
+.result{display:grid;gap:var(--space-3);padding-block-start:var(--space-5);border-block-start:1px solid var(--color-border)}
+.result textarea{min-block-size:160px;font-size:var(--text-ui)}
+@media(max-width:560px){.form-grid{grid-template-columns:minmax(0,1fr)}.form-foot .btn{inline-size:100%}}
+
+/* finale */
+.finale{position:relative;margin-block-start:var(--section);text-align:center;isolation:isolate}
+.finale-copy{position:relative;z-index:2;display:grid;justify-items:center;gap:var(--space-6);padding-inline:var(--gutter)}
+.finale h2 em{color:var(--color-text-featured)}
+.finale .body{text-align:center}
+.rock{position:relative;block-size:clamp(280px,38vw,560px);margin-block-start:calc(var(--space-7) * -1)}
+.rock img{position:absolute;inset-inline-start:50%;inset-block-end:0;inline-size:min(52%,700px);translate:-50% 0;filter:brightness(.88) saturate(.9) drop-shadow(0 24px 22px var(--color-shadow))}
+.rock::after{content:"";position:absolute;inset-inline:0;inset-block-end:0;block-size:30%;background:linear-gradient(180deg,transparent,var(--color-bg-sunken));z-index:1}
+@media(max-width:700px){.rock img{inline-size:88%}}
+
+/* footer */
+.footer{background:var(--color-bg-sunken);padding-block:var(--space-6) var(--space-7);color:var(--color-text-secondary)}
+.footer-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--space-5);row-gap:var(--space-7);align-items:end}
+.footer-brand{grid-column:1/7;color:var(--color-text)}
+.footer-brand b{display:block;font:200 clamp(4rem,12vw,10rem)/1 var(--font-serif);letter-spacing:-.03em}
+.footer-brand span{font:400 1.25rem/1.4 var(--font-serif);font-style:italic;color:var(--color-text-accent)}
+.footer ul{display:grid;gap:var(--space-2);font-size:var(--text-ui)}
+.footer ul:nth-of-type(1){grid-column:8/10}.footer ul:nth-of-type(2){grid-column:10/13}
+.footer a{text-decoration:none}
+@media(hover:hover){.footer a:hover{color:var(--color-text)}}
+.footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-3);margin-block-start:var(--space-7);padding-block-start:var(--space-4);border-block-start:1px solid var(--color-border);font-size:var(--text-caption)}
+@media(max-width:860px){.footer-brand{grid-column:1/-1}.footer ul:nth-of-type(1){grid-column:1/7}.footer ul:nth-of-type(2){grid-column:7/13}}
+
+/* lightbox */
+.lb{inline-size:100%;max-inline-size:none;block-size:100dvh;max-block-size:none;margin:0;padding:var(--space-5) var(--gutter);border:0;background:color-mix(in oklab,var(--color-scrim) 96%,transparent);color:var(--color-text);overscroll-behavior:contain}
+.lb[open]{display:grid;grid-template-rows:minmax(0,1fr) auto;gap:var(--space-5)}
+.lb::backdrop{background:var(--color-scrim)}
+.lb figure{display:grid;place-items:center;min-block-size:0}
+.lb img{max-inline-size:100%;max-block-size:100%;object-fit:contain;outline:1px solid oklch(1 0 0 / .1);outline-offset:-1px;transition:opacity 150ms ease-out}
+.lb-bar{display:flex;justify-content:space-between;align-items:center;gap:var(--space-4);flex-wrap:wrap;max-inline-size:1320px;inline-size:100%;margin-inline:auto}
+.lb-bar b{display:block;font:400 1.375rem/1.3 var(--font-serif)}
+.lb-ctrl{display:flex;align-items:center;gap:var(--space-2)}
+.lb-ctrl span{margin-inline-end:var(--space-3)}
+.icon-btn{inline-size:48px;block-size:48px;border:1px solid transparent;border-radius:50%;background:transparent;color:var(--color-text);cursor:pointer;display:grid;place-items:center;box-shadow:inset 0 0 0 1px var(--color-border-strong);transition:background-color 150ms ease-out}
+@media(hover:hover){.icon-btn:hover{background:color-mix(in oklab,var(--color-text) 10%,transparent)}}
+.icon-btn:not(:disabled):active{scale:.96}
+.icon-btn svg{inline-size:18px;block-size:18px;fill:none;stroke:currentColor;stroke-width:1.5}
+@media(prefers-reduced-motion:no-preference){.lb[open]{animation:fade 300ms ease-out}}
+
+/* staged entrance */
+@media(prefers-reduced-motion:no-preference){
+  .js .reveal{transition-property:opacity,translate,filter;transition-duration:300ms;transition-timing-function:ease-out;transition-delay:calc(var(--i,0) * 100ms)}
+  .js .reveal:not(.is-in){opacity:0;translate:0 12px;filter:blur(4px)}
+}
+@media(prefers-reduced-motion:reduce){
+  .js .reveal{transition:opacity 300ms ease-out}
+  .js .reveal:not(.is-in){opacity:0}
+}
+</style>
+
+<a class="skip" href="#main">Перейти к содержанию</a>
+
+<header class="header" id="header">
+  <a class="brand" href="#top" aria-label="Крона, на главную"><b>Крона</b><span>ландшафтное бюро</span></a>
+  <nav class="nav" id="nav" aria-label="Разделы">
+    <a href="#approach">Подход</a><a href="#projects">Проекты</a><a href="#services">Что мы делаем</a><a href="#formats">Форматы</a><a href="#contact">Контакты</a>
+  </nav>
+  <div class="header-end">
+    <a class="phone" href="tel:+79000000000">+7 (900) 000-00-00</a>
+    <a class="btn btn-sm" href="#contact">Обсудить проект</a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-haspopup="dialog" aria-controls="menu" aria-label="Открыть меню"><span></span><span></span></button>
+  </div>
+</header>
+
+<dialog class="menu" id="menu" aria-label="Меню">
+  <div class="menu-in">
+    <div class="menu-top">
+      <a class="brand" href="#top"><b>Крона</b><span>ландшафтное бюро</span></a>
+      <button class="menu-close" type="button" data-close aria-label="Закрыть меню"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <nav class="menu-links" aria-label="Разделы">
+      <a href="#approach"><small>01</small>Подход</a><a href="#projects"><small>02</small>Проекты</a><a href="#services"><small>03</small>Что мы делаем</a><a href="#process"><small>04</small>Как мы работаем</a><a href="#formats"><small>05</small>Форматы</a><a href="#contact"><small>06</small>Обсудить проект</a>
+    </nav>
+    <div class="menu-foot">
+      <div><p class="caption">Телефон</p><a href="tel:+79000000000">+7 (900) 000-00-00</a></div>
+      <div><p class="caption">Почта</p><a href="mailto:hello@krona.example">hello@krona.example</a></div>
+      <div><p class="caption">Часы</p><p class="lead" style="font-size:1.25rem">Пн–сб, 9:00–21:00</p></div>
+    </div>
+  </div>
+</dialog>
+
+<main id="main">
+  <section class="hero" id="top" aria-label="Сады бюро «Крона»">
+    <figure class="slide is-on" data-cap="Пейзажный сад с прудом" data-place="Звенигород, 2023"><img src="../../img/hero-1.jpg" alt="Пейзажный сад с прудом, стрижеными кустами и плитняком у воды"></figure>
+    <figure class="slide" data-cap="Сад у павильона" data-place="Москва, 2024"><img src="../../img/hero-2.jpg" alt="Дорожки и почвопокровные растения под навесом павильона" loading="lazy"></figure>
+    <figure class="slide" data-cap="Каскад у шале" data-place="Истра, 2022"><img src="../../img/hero-3.jpg" alt="Каменный каскад с водопадом и можжевельник у деревянного дома среди сосен" loading="lazy"></figure>
+    <div class="hero-in">
+      <div class="hero-copy">
+        <p class="eyebrow">Ландшафтное бюро с 2014 года</p>
+        <h1 class="display">Сад, который<br><em>взрослеет с&nbsp;домом</em></h1>
+        <p class="lead">Проектируем, строим и ведём сады частных резиденций. Берём не больше двенадцати объектов в сезон, чтобы каждым занимались лично.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#contact">Обсудить проект<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-on-photo" href="#projects">Смотреть проекты</a>
+        </div>
+      </div>
+      <div class="hero-ctrl">
+        <p class="hero-cap" aria-live="polite"><b id="capT">Пейзажный сад с прудом</b><span id="capP">Звенигород, 2023</span></p>
+        <div class="hero-row">
+          <div class="bars" id="bars">
+            <button type="button" aria-label="Слайд 1" aria-current="true"><i></i></button><button type="button" aria-label="Слайд 2"><i></i></button><button type="button" aria-label="Слайд 3"><i></i></button>
+          </div>
+          <button class="pause" id="pause" type="button" aria-label="Остановить слайд-шоу"><svg class="i-pause" viewBox="0 0 12 12" aria-hidden="true"><rect x="2" y="1" width="2.6" height="10" rx=".6"/><rect x="7.4" y="1" width="2.6" height="10" rx=".6"/></svg><svg class="i-play" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 1.4v9.2a.6.6 0 0 0 .9.5l7.4-4.6a.6.6 0 0 0 0-1L3.9.9a.6.6 0 0 0-.9.5z"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="approach" aria-labelledby="approachTitle">
+    <div class="wrap approach">
+      <h2 class="eyebrow reveal" id="approachTitle">Подход</h2>
+      <p class="statement reveal">Хороший сад видно не в день сдачи, а <em>через пять лет</em>. Поэтому один архитектор ведёт ваш участок от первого эскиза до ежегодного ухода, а каждое дерево мы выбираем в питомнике сами.</p>
+      <div class="figures">
+        <div class="reveal" style="--i:0"><b>12</b><span class="caption">объектов в сезон, не больше</span></div>
+        <div class="reveal" style="--i:1"><b>1</b><span class="caption">архитектор от эскиза до ухода</span></div>
+        <div class="reveal" style="--i:2"><b>2</b><span class="caption">сезона гарантии на все посадки</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects" aria-labelledby="projectsTitle">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Проекты</p>
+        <h2 class="h2 reveal" id="projectsTitle">Сады, которые <em class="accent">уже живут</em></h2>
+        <div class="filters" id="filters" role="group" aria-label="Показать проекты">
+          <button class="chip" type="button" aria-pressed="true" data-f="all">Все</button><button class="chip" type="button" aria-pressed="false" data-f="real">Реализованные</button><button class="chip" type="button" aria-pressed="false" data-f="plan">В проекте</button>
+        </div>
+      </div>
+      <div class="works" id="works"></div>
+    </div>
+  </section>
+
+  <section class="section" id="services" aria-labelledby="servicesTitle">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Что мы делаем</p>
+        <h2 class="h2 reveal" id="servicesTitle">Всё, из чего <em class="accent">складывается сад</em></h2>
+        <p class="body reveal">Одна команда отвечает за архитектуру, растения, камень, воду и уход. Вам не нужно сводить подрядчиков между собой.</p>
+      </div>
+      <div class="services">
+        <article class="service reveal" style="--i:0"><small>01</small><h3 class="h3">Ландшафтная архитектура</h3><p class="body">Генплан, который учитывает дом, виды из окон и то, как вы проводите время на участке.</p><ul><li>Генплан, дендроплан и визуализации</li><li>Рабочие чертежи для всех подрядчиков</li><li>Авторский надзор на каждом этапе</li></ul></article>
+        <article class="service reveal" style="--i:1"><small>02</small><h3 class="h3">Крупномеры и дендрология</h3><p class="body">Деревья от четырёх до двенадцати метров, которые сразу дают тень и масштаб.</p><ul><li>Отбираем каждое дерево в питомнике лично</li><li>Пересадка с комом, спецтехника и крепление</li><li>Уход и наблюдение первые два сезона</li></ul></article>
+        <article class="service reveal" style="--i:2"><small>03</small><h3 class="h3">Камень, вода и свет</h3><p class="body">Природный камень, водоёмы и освещение, которые делают сад красивым и вечером, и зимой.</p><ul><li>Плитняк, валуны, сухая кладка</li><li>Пруды, ручьи и купальные водоёмы</li><li>Сценарии света и автополив по зонам</li></ul></article>
+        <article class="service reveal" style="--i:3"><small>04</small><h3 class="h3">Сопровождение сада</h3><p class="body">Сад, который ведут те же люди, что его создали, по плану на весь год.</p><ul><li>Закреплённый садовник и график визитов</li><li>Подкормки, обработка, подготовка к зиме</li><li>Отчёт с фотографиями после каждого визита</li></ul></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="process" aria-labelledby="processTitle">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Как мы работаем</p>
+        <h2 class="h2 reveal" id="processTitle">Четыре шага, <em class="accent">один архитектор</em></h2>
+      </div>
+      <ol class="steps">
+        <li class="step reveal"><small>01</small><h3 class="h3">Знакомство</h3><p>Архитектор приезжает на участок, расспрашивает, как живёт семья, и смотрит грунт, свет и виды из окон.</p><span>Одна встреча</span></li>
+        <li class="step reveal"><small>02</small><h3 class="h3">Концепция</h3><p>Эскиз, генплан и визуализации. Показываем лично и дорабатываем, пока сад не станет вашим.</p><span>3–5 недель</span></li>
+        <li class="step reveal"><small>03</small><h3 class="h3">Реализация</h3><p>Своя бригада без субподряда. Управляющий проектом на связи, бюджет и график закреплены в договоре.</p><span>От одного сезона</span></li>
+        <li class="step reveal"><small>04</small><h3 class="h3">Сопровождение</h3><p>Ведём сад по годовому плану, чтобы через пять лет он выглядел так, как задумано.</p><span>Постоянно</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="careTitle">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Сервис</p>
+        <h2 class="h2 reveal" id="careTitle">Тихо, точно <em class="accent">и без лишних встреч</em></h2>
+      </div>
+      <div class="care">
+        <div class="reveal" style="--i:0"><b>Один человек на связи</b><p>Управляющий проектом отвечает с 9:00 до 21:00 и знает о вашем участке всё.</p></div>
+        <div class="reveal" style="--i:1"><b>Конфиденциально</b><p>Не публикуем объект без вашего согласия. По запросу подписываем NDA.</p></div>
+        <div class="reveal" style="--i:2"><b>В удобное время</b><p>Шумные работы планируем, когда семьи нет дома, и согласуем график с охраной.</p></div>
+        <div class="reveal" style="--i:3"><b>Два сезона гарантии</b><p>Если растение не приживётся, заменим его за свой счёт.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="formats" aria-labelledby="formatsTitle">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Форматы</p>
+        <h2 class="h2 reveal" id="formatsTitle">С чего <em class="accent">можно начать</em></h2>
+        <p class="body reveal">Точный бюджет зависит от площади, крупномеров и инженерии. Фиксируем его в договоре после выезда архитектора.</p>
+      </div>
+      <div class="formats">
+        <article class="format reveal" style="--i:0"><h3 class="h3">Концепция сада</h3><p class="price"><small>от</small><b>450 000</b><small>₽</small></p><p>Генплан, дендроплан, визуализации и рабочие чертежи. Реализовать можно с нами или с вашим подрядчиком.</p></article>
+        <article class="format reveal" style="--i:1"><h3 class="h3">Сад под ключ</h3><p class="price"><small>от</small><b>6 млн</b><small>₽</small></p><p>Проект, крупномеры, камень, вода, свет и полив. Авторский надзор и два сезона ухода уже включены.</p></article>
+        <article class="format reveal" style="--i:2"><h3 class="h3">Сопровождение</h3><p class="price"><small>от</small><b>150 000</b><small>₽ в месяц</small></p><p>Закреплённый садовник, сезонные работы по плану, обработка и подготовка сада к зиме.</p></article>
+      </div>
+      <p class="caption note">Первая встреча архитектора на участке бесплатна.</p>
+    </div>
+  </section>
+
+  <section class="section" id="contact" aria-labelledby="contactTitle">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Контакты</p>
+        <h2 class="h2 reveal" id="contactTitle">Обсудим <em class="accent">ваш участок</em></h2>
+        <p class="body reveal">Расскажите о доме и участке. Архитектор перезвонит в течение рабочего дня и предложит время для встречи.</p>
+      </div>
+      <div class="contact">
+        <div class="contact-side">
+          <div class="lines">
+            <div class="line"><div><p class="caption">Телефон</p><a href="tel:+79000000000">+7 (900) 000-00-00</a></div><button class="copy" type="button" data-copy="+7 (900) 000-00-00" aria-label="Копировать телефон">Копировать</button></div>
+            <div class="line"><div><p class="caption">Почта</p><a href="mailto:hello@krona.example">hello@krona.example</a></div><button class="copy" type="button" data-copy="hello@krona.example" aria-label="Копировать почту">Копировать</button></div>
+            <p class="caption" role="status" id="copyStatus"></p>
+          </div>
+          <div class="faq" id="faq"></div>
+        </div>
+
+        <form class="form contact-form" id="form" novalidate>
+          <h3 class="h3">Запрос на встречу</h3>
+          <div class="form-grid">
+            <div class="field"><label for="fName">Имя</label><input class="input" id="fName" name="name" autocomplete="name" placeholder="Анна Сергеевна" aria-describedby="fNameErr"><p class="err" id="fNameErr" hidden>Введите имя</p></div>
+            <div class="field"><label for="fContact">Телефон или почта</label><input class="input" id="fContact" name="contact" placeholder="+7 900 000-00-00" aria-describedby="fContactErr"><p class="err" id="fContactErr" hidden>Введите телефон или почту, чтобы архитектор смог связаться с вами</p></div>
+            <div class="field"><label for="fPlace">Где участок</label><input class="input" id="fPlace" name="place" placeholder="Новорижское шоссе, 25 км"></div>
+            <div class="field"><label for="fArea">Площадь участка</label><input class="input" id="fArea" name="area" placeholder="40 соток"></div>
+            <div class="field full"><label for="fNeed">Что планируете</label>
+              <select class="input" id="fNeed" name="need"><option>Новый сад с нуля</option><option>Переделать существующий сад</option><option>Сопровождение готового сада</option><option>Пока не решили, нужен совет</option></select></div>
+            <fieldset class="field full"><legend>Как удобнее связаться</legend>
+              <div class="radios"><label><input type="radio" name="via" value="Звонок" checked><span>Звонок</span></label><label><input type="radio" name="via" value="Мессенджер"><span>Мессенджер</span></label><label><input type="radio" name="via" value="Почта"><span>Почта</span></label></div>
+            </fieldset>
+            <div class="field full"><label for="fMsg">Комментарий</label><textarea class="input" id="fMsg" name="comment" placeholder="Дом построен в 2025 году, участок с уклоном к реке, хотим купальный пруд"></textarea></div>
+          </div>
+          <div class="form-foot">
+            <p class="caption">Откроем письмо с вашим запросом в почтовой программе. Данные никуда больше не отправляются.</p>
+            <button class="btn btn-primary" type="submit">Отправить запрос<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+          <div class="result" id="result" hidden>
+            <p role="status" id="resultStatus"></p>
+            <label class="caption" for="reqOut">Текст запроса</label>
+            <textarea class="input" id="reqOut" readonly></textarea>
+            <div class="actions"><button class="btn btn-secondary btn-sm" type="button" id="copyReq">Скопировать текст</button></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="finale" aria-labelledby="finaleTitle">
+    <div class="finale-copy">
+      <h2 class="h2 reveal" id="finaleTitle">Осень — время<br><em>больших деревьев</em></h2>
+      <p class="body reveal">Крупномеры лучше всего приживаются при осенней посадке. Обсудим ваш участок, пока сезон открыт.</p>
+      <a class="btn btn-primary reveal" href="#contact">Обсудить проект<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="rock" aria-hidden="true"><img src="../../img/gr-rock-1.webp" alt="" loading="lazy"></div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand"><b>Крона</b><span>ландшафтное бюро в Подмосковье</span></div>
+      <ul aria-label="Разделы"><li><a href="#approach">Подход</a></li><li><a href="#projects">Проекты</a></li><li><a href="#services">Что мы делаем</a></li><li><a href="#formats">Форматы</a></li><li><a href="#contact">Контакты</a></li></ul>
+      <ul aria-label="Контакты"><li><a href="tel:+79000000000">+7 (900) 000-00-00</a></li><li><a href="mailto:hello@krona.example">hello@krona.example</a></li><li>Пн–сб, 9:00–21:00</li><li>Работаем по договору</li></ul>
+    </div>
+    <div class="footer-bottom"><span>© 2014–2026 Ландшафтное бюро «Крона»</span><span>Цены на сайте справочные и не являются публичной офертой</span></div>
+  </div>
+</footer>
+
+<dialog class="lb" id="lb" aria-label="Просмотр проекта">
+  <figure><img id="lbImg" alt=""></figure>
+  <div class="lb-bar">
+    <div><b id="lbTitle"></b><span class="caption" id="lbMeta"></span></div>
+    <div class="lb-ctrl"><span class="caption num" id="lbCount"></span>
+      <button class="icon-btn" id="lbPrev" type="button" aria-label="Предыдущий проект"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="icon-btn" id="lbNext" type="button" aria-label="Следующий проект"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      <button class="icon-btn" type="button" data-close autofocus aria-label="Закрыть просмотр"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function(){
+var $=function(s,c){return(c||document).querySelector(s)},$$=function(s,c){return[].slice.call((c||document).querySelectorAll(s))};
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* header: solid after the hero, current section in the nav */
+var header=$('#header'),hero=$('#top'),navLinks=$$('#nav a');
+new IntersectionObserver(function(e){header.classList.toggle('is-solid',!e[0].isIntersecting)},{rootMargin:'-80px 0px 0px 0px'}).observe(hero);
+var secIO=new IntersectionObserver(function(en){en.forEach(function(x){if(!x.isIntersecting)return;navLinks.forEach(function(a){a.toggleAttribute('aria-current',a.getAttribute('href')==='#'+x.target.id);if(a.hasAttribute('aria-current'))a.setAttribute('aria-current','true')})})},{rootMargin:'-45% 0px -50% 0px'});
+navLinks.forEach(function(a){var s=$(a.getAttribute('href'));if(s)secIO.observe(s)});
+
+/* dialogs: focus goes back to the control that opened them */
+function openDialog(d,from){d._from=from||document.activeElement;d.showModal();document.body.style.overflow='hidden'}
+$$('dialog').forEach(function(d){
+  d.addEventListener('close',function(){document.body.style.overflow='';if(d._from&&d._from.focus&&!d._skipReturn)d._from.focus();d._skipReturn=false});
+  $$('[data-close]',d).forEach(function(b){b.addEventListener('click',function(){d.close()})});
+});
+var menu=$('#menu');
+$('#menuBtn').addEventListener('click',function(e){openDialog(menu,e.currentTarget)});
+$$('a',menu).forEach(function(a){a.addEventListener('click',function(){menu._skipReturn=true;menu.close()})});
+
+/* hero slideshow with a pause control */
+(function(){var sl=$$('.slide'),bars=$$('#bars button'),barsEl=$('#bars'),pb=$('#pause'),cur=0,dur=7000,tm=null,paused=reduce;
+  document.documentElement.style.setProperty('--dur',dur/1000+'s');
+  function go(i){if(i===cur)return;sl[cur].classList.remove('is-on');sl[i].classList.add('is-on');
+    bars.forEach(function(b,j){b.removeAttribute('aria-current');b.classList.toggle('is-done',j<i)});void bars[i].offsetWidth;bars[i].setAttribute('aria-current','true');
+    cur=i;$('#capT').textContent=sl[i].dataset.cap;$('#capP').textContent=sl[i].dataset.place;restart()}
+  function restart(){clearTimeout(tm);if(!paused)tm=setTimeout(function(){go((cur+1)%sl.length)},dur)}
+  function setPaused(p){paused=p;pb.toggleAttribute('data-paused',p);pb.setAttribute('aria-label',p?'Запустить слайд-шоу':'Остановить слайд-шоу');barsEl.classList.toggle('is-paused',p);
+    if(p)clearTimeout(tm);else{var b=bars[cur];b.removeAttribute('aria-current');void b.offsetWidth;b.setAttribute('aria-current','true');restart()}}
+  bars.forEach(function(b,i){b.addEventListener('click',function(){go(i)})});
+  pb.addEventListener('click',function(){setPaused(!paused)});
+  document.addEventListener('visibilitychange',function(){if(document.hidden)clearTimeout(tm);else restart()});
+  setPaused(paused)})();
+
+/* projects */
+var works=[
+  {src:'../../img/hero-1.jpg',t:'Пейзажный сад с прудом',m:'Звенигород · 32 сотки · 2023',f:'real',c:'w-a',alt:'Пейзажный сад с прудом и стрижеными кустами'},
+  {src:'../../img/courtyard.jpg',t:'Дворик из плитняка',m:'Москва · 140 м² · 2024',f:'real',c:'w-b',alt:'Внутренний двор с дорожкой из плитняка и молодыми деревьями, вид сверху'},
+  {src:'../../img/hero-3.jpg',t:'Каскад у шале',m:'Истра · 18 соток · 2022',f:'real',c:'w-c',alt:'Каменный каскад с водопадом у деревянного дома'},
+  {src:'../../img/pool.jpg',t:'Сад с бассейном',m:'Рублёво-Успенское шоссе · 45 соток · 2026',f:'plan',c:'w-d',alt:'Визуализация сада с прямоугольным бассейном и извилистой дорожкой, вид сверху'},
+  {src:'../../img/driveway.jpg',t:'Въезд из гравия',m:'Новая Рига · 25 соток · 2023',f:'real',c:'w-e',alt:'Гравийный въезд к дому между каменными стенками и лавандой'},
+  {src:'../../img/hero-2.jpg',t:'Сад у павильона',m:'Москва · 0,6 га · 2024',f:'real',c:'w-f',alt:'Дорожки и почвопокровные растения под навесом павильона'},
+  {src:'../../img/plan-pond.jpg',t:'Сад с купальным прудом',m:'Дмитров · 30 соток · 2025',f:'plan',c:'w-g',alt:'Генплан участка с купальным прудом в центре'},
+  {src:'../../img/plan-house.jpg',t:'Участок с террасой',m:'Апрелевка · 15 соток · 2025',f:'plan',c:'w-h',alt:'Генплан участка с домом, террасой и газоном'},
+  {src:'../../img/lawn.jpg',t:'Партерный газон',m:'Звенигород · 22 сотки · 2022',f:'real',c:'w-i',alt:'Широкий газон с миксбордерами вдоль кромки леса'}
+];
+var wEl=$('#works'),curF='all';
+works.forEach(function(w,i){var b=document.createElement('button');b.type='button';b.className='work reveal '+w.c;w.el=b;
+  b.innerHTML='<span class="work-img"><img src="'+w.src+'" alt="'+w.alt+'" loading="lazy"></span><span class="work-meta"><span class="work-t">'+w.t+'</span><span class="caption">'+w.m+'</span></span>';
+  b.addEventListener('click',function(){var v=works.filter(function(x){return !x.el.disabled});openLb(v,v.indexOf(w),b)});wEl.appendChild(b)});
+$$('#filters button').forEach(function(b){b.addEventListener('click',function(){curF=b.dataset.f;$$('#filters button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+  works.forEach(function(w){w.el.disabled=curF!=='all'&&w.f!==curF})})});
+
+var lb=$('#lb'),lbList=[],lbI=0;
+function showLb(){var w=lbList[lbI],im=$('#lbImg');im.style.opacity=0;setTimeout(function(){im.src=w.src;im.alt=w.alt;im.style.opacity=1},150);
+  $('#lbTitle').textContent=w.t;$('#lbMeta').textContent=w.m;$('#lbCount').textContent=(lbI+1)+' из '+lbList.length}
+function openLb(list,i,from){lbList=list;lbI=Math.max(0,i);showLb();openDialog(lb,from)}
+function stepLb(d){lbI=(lbI+d+lbList.length)%lbList.length;showLb()}
+$('#lbPrev').addEventListener('click',function(){stepLb(-1)});$('#lbNext').addEventListener('click',function(){stepLb(1)});
+lb.addEventListener('keydown',function(e){if(e.key==='ArrowRight')stepLb(1);if(e.key==='ArrowLeft')stepLb(-1)});
+lb.addEventListener('click',function(e){if(e.target===lb||e.target.tagName==='FIGURE')lb.close()});
+var tx=null;lb.addEventListener('touchstart',function(e){tx=e.touches[0].clientX},{passive:true});
+lb.addEventListener('touchend',function(e){if(tx===null)return;var dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)stepLb(dx<0?1:-1);tx=null});
+
+/* FAQ */
+var faqs=[['С какого бюджета вы берётесь за проект?','Концепция начинается от 450 000 ₽, сад под ключ — от 6 млн ₽. Точный бюджет зависит от площади, крупномеров и инженерии, его фиксируем в договоре.'],
+  ['Можно ли начать зимой?','Да, зима — лучшее время для проекта. Тогда в апреле можно сразу выходить на участок, а осенью сажать крупномеры.'],
+  ['Вы работаете с архитектором нашего дома?','Да, и часто. Согласуем генплан, инженерию и свет, чтобы дом и сад читались как одно целое.'],
+  ['Что будет, если дерево не приживётся?','Заменим его за свой счёт. Гарантия на посадки — два сезона, если сад ведём мы.'],
+  ['Вы публикуете объекты?','Только с вашего согласия. По запросу подписываем NDA ещё до первой встречи.']];
+$('#faq').innerHTML=faqs.map(function(f){return '<details><summary>'+f[0]+'</summary><p>'+f[1]+'</p></details>'}).join('');
+
+/* copy */
+var cs=$('#copyStatus');
+function copy(text,ok,fail){if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(text).then(ok,fail);else fail()}
+$$('[data-copy]').forEach(function(b){b.addEventListener('click',function(){var t=b.dataset.copy;copy(t,function(){cs.textContent='Скопировано: '+t},function(){cs.textContent='Не удалось скопировать. Выделите текст вручную: '+t})})});
+
+/* request */
+var form=$('#form'),need=[$('#fName'),$('#fContact')];
+form.addEventListener('submit',function(e){e.preventDefault();var first=null;
+  need.forEach(function(f){var bad=!f.value.trim();f.setAttribute('aria-invalid',bad);$('#'+f.id+'Err').hidden=!bad;if(bad&&!first)first=f});
+  if(first){first.focus();return}
+  var v=function(id){return $('#'+id).value.trim()};
+  var t='Здравствуйте! Хотим обсудить сад.\n\nИмя: '+v('fName')+'\nКонтакт: '+v('fContact')+'\nУчасток: '+(v('fPlace')||'—')+', '+(v('fArea')||'—')+'\nПланируем: '+v('fNeed')+'\nУдобнее связаться: '+$('input[name=via]:checked').value+(v('fMsg')?'\n\nКомментарий: '+v('fMsg'):'');
+  $('#reqOut').value=t;$('#result').hidden=false;
+  $('#resultStatus').textContent='Открыли письмо с запросом в почтовой программе. Если оно не появилось, скопируйте текст и отправьте на hello@krona.example.';
+  location.href='mailto:hello@krona.example?subject='+encodeURIComponent('Запрос на встречу: '+v('fName'))+'&body='+encodeURIComponent(t)});
+need.forEach(function(f){f.addEventListener('input',function(){f.removeAttribute('aria-invalid');$('#'+f.id+'Err').hidden=true})});
+$('#copyReq').addEventListener('click',function(){var o=$('#reqOut');copy(o.value,function(){$('#resultStatus').textContent='Текст запроса скопирован'},function(){o.focus();o.select();$('#resultStatus').textContent='Текст выделен, скопируйте его'})});
+
+/* staged entrance */
+var rv=$$('.reveal');
+if('IntersectionObserver'in window){var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('is-in');io.unobserve(x.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+  rv.forEach(function(el){io.observe(el)})}else rv.forEach(function(el){el.classList.add('is-in')});
+})();
+</script>
+</body></html>
